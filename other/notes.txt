@@ -1,0 +1,29 @@
+Nomes:
+    1. HandMover / HandCursor
+    2. AirMouse / AirCursor
+
+Ideias:
+    - Mover o mouse com o indicador
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+
+
+Atividades:
+    [ ] Mover o mouse e clicar
+    [ ] Controlar o volume
+    [ ] Passar area de trabalho
+    [ ] Minimizar/Maximizar programas abertos
+    [ ] 
+    [ ] 
+    [ ] 
+    [ ] 
+    [ ] 
+    [ ] 
+
