@@ -55,8 +55,9 @@ while True:
     rect_y = (h - rect_height) // 2 - 100
     cv2.rectangle(img, (rect_x, rect_y), (rect_x + rect_width, rect_y + rect_height), (0, 0, 255), 2)
 
-    # Obtém o uso de memória atual em MB
-    memory_usage = psutil.virtual_memory().used / 1024 / 1024
+    # Obtém o uso de memória atual do programa em MB
+    process = psutil.Process()
+    memory_usage = process.memory_info().rss / 1024 / 1024
     memory_text = f"RAM: {memory_usage:.2f} MB"  # Texto a ser exibido
 
     # Define a posição e o estilo do texto
