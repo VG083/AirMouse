@@ -3,7 +3,7 @@ import mediapipe as mp
 import pyautogui
 import time
 import screeninfo
-
+import psutil
 
 
 def is_thumb_extended(points_list):
@@ -54,6 +54,20 @@ while True:
     rect_x = (w - rect_width) // 2
     rect_y = (h - rect_height) // 2 - 100
     cv2.rectangle(img, (rect_x, rect_y), (rect_x + rect_width, rect_y + rect_height), (0, 0, 255), 2)
+
+    # Obtém o uso de memória atual em MB
+    memory_usage = psutil.virtual_memory().used / 1024 / 1024
+    memory_text = f"RAM: {memory_usage:.2f} MB"  # Texto a ser exibido
+
+    # Define a posição e o estilo do texto
+    text_position = (rect_x + rect_width - 200, rect_y - 20)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 0.8
+    color = (255, 255, 255)  # Cor do texto (branco)
+    thickness = 2
+
+    # Desenha o texto na imagem
+    cv2.putText(img, memory_text, text_position, font, font_scale, color, thickness, cv2.LINE_AA)
 
     if handPoints:
         for points in handPoints:
