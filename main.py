@@ -2,6 +2,8 @@ import cv2
 import mediapipe as mp
 import pyautogui
 import time
+import screeninfo
+
 
 
 def is_thumb_extended(points_list):
@@ -31,6 +33,12 @@ hands = mp.solutions.hands.Hands(
 )
 mpDraw = mp.solutions.drawing_utils
 last_click_time = time.time()
+# Obtém informações sobre os monitores conectados
+monitors = screeninfo.get_monitors()
+monitor_width = int(monitors[0].width)
+rect_width = int(round(monitor_width * 0.15))
+monitor_height = int(monitors[0].height)
+rect_height = int(round(monitor_height * 0.15))
 
 while True:
     success, img = video.read()
@@ -43,8 +51,6 @@ while True:
     handPoints = results.multi_hand_landmarks
 
     h, w, _ = img.shape
-    rect_width = 288
-    rect_height = 162
     rect_x = (w - rect_width) // 2
     rect_y = (h - rect_height) // 2 - 100
     cv2.rectangle(img, (rect_x, rect_y), (rect_x + rect_width, rect_y + rect_height), (0, 0, 255), 2)
